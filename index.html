@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Liu&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Liu&#39;s Blog">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
+<meta property="og:site_name" content="Liu&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Liu&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Liu&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-求解n阶幻方" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/03/%E6%B1%82%E8%A7%A3n%E9%98%B6%E5%B9%BB%E6%96%B9/" class="article-date">
+  <time datetime="2019-11-03T12:49:33.000Z" itemprop="datePublished">2019-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/03/%E6%B1%82%E8%A7%A3n%E9%98%B6%E5%B9%BB%E6%96%B9/">求解n阶幻方</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="求n阶幻方"><a href="#求n阶幻方" class="headerlink" title="求n阶幻方"></a>求n阶幻方</h2><h4 id="原理描述："><a href="#原理描述：" class="headerlink" title="原理描述："></a>原理描述：</h4><p>首先我们先对矩阵进行分类，因为不同类的矩阵有不同的幻方求解方法</p>
+<ol>
+<li>奇数阶；</li>
+<li>4m阶；</li>
+<li>4m+2阶；<h6 id="（1）奇数阶幻方求解（假设阶数为n）："><a href="#（1）奇数阶幻方求解（假设阶数为n）：" class="headerlink" title="（1）奇数阶幻方求解（假设阶数为n）："></a>（1）奇数阶幻方求解（假设阶数为n）：</h6></li>
+<li>先将1放在第一行的n/2处；</li>
+<li>从2开始每个数填在的前一个数的左上角，如果上一个数的左上角已经有数了，那么将该数填在上一个数的下方；<br>（注意：如果发现下标越界，则对下标取模，也就是直接index=(index+n)%n）</li>
+<li>按第2步填写到最后就可以得到一个奇数阶的幻方了</li>
+</ol>
+<h6 id="（2）4m阶幻方求解"><a href="#（2）4m阶幻方求解" class="headerlink" title="（2）4m阶幻方求解"></a>（2）4m阶幻方求解</h6><ol>
+<li>矩阵从左到右，从上到下，从1开始递增填入矩阵</li>
+<li>将矩阵中间的n/2列以中间为对称轴上下交换值</li>
+<li>将矩阵中间的n/2行以中间为对称轴左右交换值<br>下面展示四阶幻方求解过程:</li>
+</ol>
+<h6 id="（2）4m-2阶幻方求解"><a href="#（2）4m-2阶幻方求解" class="headerlink" title="（2）4m+2阶幻方求解"></a>（2）4m+2阶幻方求解</h6><p>1、将魔方分成A、B、C、D四个k阶方阵，如下图这四个方阵都为奇方阵，依次将A、D、B、C填充为奇魔方。<br>A B<br>C D<br>2、交换A、C魔方元素：<br>对魔方的中间行，交换从中间列向右的m列各对应元素；<br>对其他行，交换从左向右m列各对应元素。<br>3、交换B、D魔方元素：<br>交换从中间列向左m – 1列各对应元素。<br>下面展示10阶幻方的求解过程<br><a href="/source/_posts/image/4阶幻方.png">1</a>: /source/_posts/image/10阶幻方(1).jpg<br>[2]: /source/_posts/image/10阶幻方(2).jpg<br>[3]: /source/_posts/image/10阶幻方(3).jpg<br>注意：6阶幻方k-1=0所以B、D块元素不发生交换<br><a href="/source/_posts/image/4阶幻方.png">1</a>: /source/_posts/image/6阶幻方.jpg</p>
+<h4 id="源码展示："><a href="#源码展示：" class="headerlink" title="源码展示："></a>源码展示：</h4><p>以下为求解n阶幻方的函数源码（主函数省略，直接在自己的主函数里调用magic(n)；即可获得n阶幻方）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">showMatri</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matri,<span class="keyword">int</span> n, <span class="keyword">int</span> m = <span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!m)</span><br><span class="line">		m = n;</span><br><span class="line">	<span class="keyword">int</span> sumrow;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sumcol(n+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		sumrow = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (i == j)</span><br><span class="line">				sumcol[n] += matri[i][j];</span><br><span class="line">			sumrow += matri[i][j];</span><br><span class="line">			sumcol[i] += matri[j][i];</span><br><span class="line">		&#125;</span><br><span class="line">		matri[i].push_back(sumrow);</span><br><span class="line">	&#125;</span><br><span class="line">	matri.push_back(sumcol);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= m; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; matri[i][j] &lt;&lt; <span class="string">"    "</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OddMatri</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matri, <span class="keyword">int</span> n,<span class="keyword">int</span> origincounter = <span class="number">1</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> counter = origincounter;</span><br><span class="line">	<span class="comment">//将1置于第一行中间位置</span></span><br><span class="line">	matri[<span class="number">0</span>][n / <span class="number">2</span>] = counter;</span><br><span class="line">	counter++;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">0</span>, y = n / <span class="number">2</span>;</span><br><span class="line">	<span class="comment">//从2开始每一个数字，置于上一个数字左上角，如果左上角已有元素则置于上一个数字的正下方</span></span><br><span class="line">	<span class="comment">//如果出现越界则对下标取模（(下标+n)%n）</span></span><br><span class="line">	<span class="keyword">while</span> (counter &lt;= n * n)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x1 = (x - <span class="number">1</span> + n) % n;</span><br><span class="line">		<span class="keyword">int</span> y1 = (y + <span class="number">1</span> + n) % n;</span><br><span class="line">		<span class="keyword">if</span> (matri[x1][y1])</span><br><span class="line">		&#123;</span><br><span class="line">			x1 = (x + <span class="number">1</span> + n) % n;</span><br><span class="line">			y1 = y;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//cout &lt;&lt; x1 &lt;&lt; ' ' &lt;&lt; y1 &lt;&lt; endl;</span></span><br><span class="line">		<span class="comment">//showMatri(matri, n);</span></span><br><span class="line">		matri[x1][y1] = counter;</span><br><span class="line">		x = x1;</span><br><span class="line">		y = y1;</span><br><span class="line">		counter++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Matri_4m</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matri, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//初始化矩阵，</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			matri[i][j] = i * n + j + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// swap </span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = n / <span class="number">4</span>; j &lt; n / <span class="number">4</span> * <span class="number">3</span>; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n / <span class="number">2</span>; i++)</span><br><span class="line">			swap(matri[i][j], matri[n - <span class="number">1</span> - i][j]); <span class="comment">// mid 2 col</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = n / <span class="number">4</span>; j &lt; n / <span class="number">4</span> * <span class="number">3</span>; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n / <span class="number">2</span>; i++)</span><br><span class="line">			swap(matri[j][i], matri[j][n - <span class="number">1</span> - i]); <span class="comment">// mid 2 row</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Matri_4m_2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matri, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> k = n / <span class="number">2</span>;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; m;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; m1(n, <span class="number">0</span>);</span><br><span class="line">		m.push_back(m1);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//生成奇魔方</span></span><br><span class="line">	OddMatri(m, k);</span><br><span class="line">	<span class="comment">//showMatri(m, k);</span></span><br><span class="line">	<span class="comment">//将矩阵从左到右，从上到下为ABCD四个区块,</span></span><br><span class="line">	<span class="comment">//按A、D、B、C的顺序依次填充矩阵</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			matri[i][j] = m[i][j];</span><br><span class="line">			matri[i + k][j + k] = m[i][j] + k * k;<span class="comment">//填D</span></span><br><span class="line">			matri[i][j + k] = m[i][j] + k * k * <span class="number">2</span>;<span class="comment">//填B</span></span><br><span class="line">			matri[i + k][j] = m[i][j] + k * k * <span class="number">3</span>;<span class="comment">//填C</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// Swap A and C</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (i == k / <span class="number">2</span>)<span class="comment">//中间行，交换从中间列向右的k列，n = 2*(2k+1)</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = k / <span class="number">2</span>; j &lt; k - <span class="number">1</span>; j++)</span><br><span class="line">				swap(matri[i][j], matri[i + k][j]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span><span class="comment">//其他行，交换从左向右k列,n = 2*(2k+1)</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k / <span class="number">2</span>; j++)</span><br><span class="line">				swap(matri[i][j], matri[i + k][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Swap B and D</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)<span class="comment">//交换中间列向左k-1列，n = 2*(2k+1)</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; (k - <span class="number">1</span>) / <span class="number">2</span> - <span class="number">1</span>; j++)</span><br><span class="line">			swap(matri[i][k + k / <span class="number">2</span> - j], matri[i + k][k + k / <span class="number">2</span> - j]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">magic</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; matri;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; m(n, <span class="number">0</span>);</span><br><span class="line">		matri.push_back(m);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (n % <span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		OddMatri(matri, n);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (n % <span class="number">4</span> == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Matri_4m(matri, n);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> ((n - <span class="number">2</span>) % <span class="number">4</span> == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		Matri_4m_2(matri, n);</span><br><span class="line">	&#125;</span><br><span class="line">	showMatri(matri, n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><p>1、<a href="https://blog.csdn.net/lsldd/article/details/60468996" target="_blank" rel="noopener">https://blog.csdn.net/lsldd/article/details/60468996</a><br>2、<a href="https://blog.csdn.net/yxy602843889/article/details/81320177" target="_blank" rel="noopener">https://blog.csdn.net/yxy602843889/article/details/81320177</a><br>3、<a href="https://blog.csdn.net/jchangbrave/article/details/52448150" target="_blank" rel="noopener">https://blog.csdn.net/jchangbrave/article/details/52448150</a><br>4、<a href="http://www.360doc.com/content/17/1101/21/17799864_700125991.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/17/1101/21/17799864_700125991.shtml</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/11/03/%E6%B1%82%E8%A7%A3n%E9%98%B6%E5%B9%BB%E6%96%B9/" data-id="ck2j18xkw0003sot3g5aj9d7y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-article-title" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/31/article-title/" class="article-date">
+  <time datetime="2019-10-31T06:28:49.000Z" itemprop="datePublished">2019-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/31/article-title/">chatterbot</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/31/article-title/" data-id="ck2j18xks0001sot37ujt5w51" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/30/hello-world/" class="article-date">
+  <time datetime="2019-10-30T14:00:04.496Z" itemprop="datePublished">2019-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/30/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/30/hello-world/" data-id="ck2j18xkz0005sot3fyma9glx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/03/%E6%B1%82%E8%A7%A3n%E9%98%B6%E5%B9%BB%E6%96%B9/">求解n阶幻方</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/31/article-title/">chatterbot</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/30/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 LiuHongJie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
